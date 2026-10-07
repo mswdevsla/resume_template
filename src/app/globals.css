@@ -1,26 +1,190 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #e7e5e4;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --paper: #ffffff;
+  --muted: #3f3f46;
+  --rule: #18181b;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
+}
+
+.resume-stage {
+  overflow-x: auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.resume-sheet {
+  box-sizing: border-box;
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm 16mm 16mm;
+  background: var(--paper);
+  color: var(--foreground);
+  font-size: 13px;
+  line-height: 1.6;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.resume-header {
+  text-align: center;
+}
+
+.resume-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.resume-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.35rem 0;
+  margin-top: 0.45rem;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.resume-contact a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.resume-dot {
+  margin: 0 0.45rem;
+  color: #a1a1aa;
+}
+
+.resume-section {
+  margin-top: 1.15rem;
+}
+
+.resume-section h2 {
+  margin-bottom: 0.45rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1.5px solid var(--rule);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.competency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.competency-list li,
+.resume-details li {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.competency-list li::before,
+.resume-details li::before {
+  content: "";
+  flex: none;
+  width: 3px;
+  height: 3px;
+  margin-top: 0.55em;
+  border-radius: 999px;
+  background: var(--rule);
+}
+
+.resume-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.resume-block {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.resume-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.resume-row h3,
+.resume-strong {
+  font-weight: 700;
+}
+
+.resume-period {
+  flex: none;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  font-size: 12.5px;
+}
+
+.resume-role {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.resume-meta {
+  color: var(--muted);
+}
+
+.resume-details {
+  margin-top: 0.15rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.skill-list li {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: 0.75rem;
+}
+
+.skill-name {
+  font-weight: 700;
+}
+
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  .print-hidden {
+    display: none !important;
+  }
+
+  .resume-stage {
+    overflow: visible;
+    padding: 0;
+  }
+
+  .resume-sheet {
+    width: auto;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
 }
